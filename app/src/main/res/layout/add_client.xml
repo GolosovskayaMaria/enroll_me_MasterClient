@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText 
+      android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/contact_name"
+    android:hint="contact name"
+    android:layout_margin="20dp"
+        />
+    <EditText 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/phone_number"
+    android:hint="phone number"
+    android:inputType="phone"
+    android:layout_margin="20dp"
+        />
+    <FrameLayout
+           android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+         >
+
+     <TextView 
+            android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+         android:layout_marginBottom="5dp"
+         android:layout_marginTop="5dp"
+         android:layout_gravity="center_vertical"
+         android:textSize="18sp"
+         android:hint="Соц.сети"
+    android:id="@+id/social"
+         />   
+       <Spinner 
+          android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:id="@+id/social_array"
+    android:drawSelectorOnTop="true"
+           /> 
+    </FrameLayout>
+        <EditText 
+       android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/location"
+    android:hint="адрес клиента"
+    android:layout_margin="20dp"
+        />
+<Button 
+             android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="16sp"
+    android:textColor="@android:color/white"
+    android:layout_gravity="center_horizontal"
+    android:text="Добавить"
+        android:id="@+id/check"
+        android:background="@drawable/botton_shape0"
+    />
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+       android:gravity="center"
+    android:orientation="vertical" >
+    <TextView 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+      android:layout_marginTop="20dp"  
+      android:id="@+id/main_name"
+       android:textSize="16sp"
+       android:gravity="center"
+        />
+ 
+    <EditText 
+           android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+        android:id="@+id/name"
+        android:layout_margin="20dp"
+        android:hint="Ваше имя"
+         android:visibility="invisible"
+        />
+    <EditText 
+           android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+        android:id="@+id/last_name"
+        android:layout_margin="20dp"
+        android:hint="Фамилия (необязательно)"
+         android:visibility="invisible"
+        />
+    
+    <TextView
+        android:layout_margin="40dp"
+        android:padding="20dp"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="16sp"
+    android:textColor="@android:color/white"
+    android:text="Запомнить"
+        android:id="@+id/check"
+        android:background="@drawable/botton_shape0"
+        /> 
+    
+    
+</LinearLayout>
+  </FrameLayout> 

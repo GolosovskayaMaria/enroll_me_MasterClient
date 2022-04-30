@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="socialnames">
+        <item ></item> 
+      <item >WhatsApp</item>  
+      <item >Viber</item> 
+      <item >Telegram</item> 
+      <item >Facebook</item>
+        </string-array>
+    <integer-array name="social_icons">
+        <item>0</item>
+        <item>@drawable/whatsapp</item>
+        <item>@drawable/icon_viber_message</item>
+        <item>@drawable/logo_middle</item>
+        <item>@drawable/com_facebook_button_icon_blue</item>
+    </integer-array>
+</resources>

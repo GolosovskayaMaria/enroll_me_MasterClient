@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout  android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+    android:orientation="horizontal"   
+    android:padding="20dp"
+  >
+     <ImageView 
+            android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:src="@drawable/logo_avatar"
+     android:id="@+id/icon"
+         />
+    <LinearLayout 
+            android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+    android:orientation="vertical"        >
+        
+        
+  
+ 
+   <TextView
+            android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:id="@+id/name"
+  
+    android:textColor="#000000"
+    android:textSize="16sp"
+         />
+      <TextView
+            android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:id="@+id/phone"
+   
+    android:textSize="16sp"
+
+         />
+        </LinearLayout>
+
+
+</LinearLayout>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right|center_vertical"
+        android:src="@drawable/del_card"
+        android:layout_marginRight="20dp"
+        android:id="@+id/icon_del"
+        android:visibility="gone"
+        />
+    </FrameLayout>

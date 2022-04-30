@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "355486944954",
+    "firebase_url": "https://twiplus-9e1b6.firebaseio.com",
+    "project_id": "twiplus-9e1b6",
+    "storage_bucket": "twiplus-9e1b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355486944954:android:68e1977de0e7a176",
+        "android_client_info": {
+          "package_name": "sim.twittapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355486944954-s7im0p7m19carhn59vm6ldv1jsr4sjhd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7FxLwePGk1svb8mVdRmfb4PLVaDQUaOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355486944954-s7im0p7m19carhn59vm6ldv1jsr4sjhd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

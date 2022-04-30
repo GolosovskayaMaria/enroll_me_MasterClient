@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:background="#ffffff"
+    >
+
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:orientation="vertical" >
+    <FrameLayout 
+         android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+       android:padding="20dp" 
+         android:background="@drawable/background_top_menu"
+        >
+    <LinearLayout  
+         android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+       android:orientation="vertical"
+      
+        >
+       <TextView 
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_gravity="center"
+      android:id="@+id/main_name"
+       android:textSize="16sp"
+      
+      android:textColor="#ffffff"
+        />
+       <TextView 
+          android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+       android:textSize="16sp"
+     android:layout_gravity="center"
+     android:text="Расписание"
+     android:layout_marginTop="10dp"
+    android:textColor="@color/brand_background"
+        android:padding="10dp"
+      android:id="@+id/see_send"      
+      android:background="@drawable/background_setting_button_shape"
+           />
+       </LinearLayout >
+       <ImageView 
+           android:layout_width="50dp"
+        android:layout_height="50dp"
+       android:src="@drawable/back11"
+     android:onClick="back"
+        android:id="@+id/back1"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+           />
+       </FrameLayout>
+           <EditText
+          android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/Search"
+    android:textSize="18sp"
+    android:padding="10dp"
+    android:layout_margin="20dp"
+    android:visibility="gone"
+    android:hint="Search"
+        /> 
+
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     
+         />
+
+
+           
+</LinearLayout>
+<ImageView 
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="20dp"
+        android:id="@+id/add"     
+            android:src="@drawable/add_client"
+    />
+<DatePicker 
+     android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pada_picker"
+        android:layout_gravity="center"
+        android:background="#ffffff"
+        android:visibility="gone"
+    />
+<!-- 
+<ImageView 
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:id="@+id/see_send"     
+            android:src="@drawable/editor_help_button"
+    />  -->
+</FrameLayout>
