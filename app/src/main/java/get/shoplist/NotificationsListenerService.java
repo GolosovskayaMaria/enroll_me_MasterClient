@@ -53,8 +53,8 @@ public class NotificationsListenerService extends GcmListenerService {
     private Thread traa;
     @Override
     public void onMessageReceived(String s, Bundle bundle) {
+        Log.e("push", "received " + s);
         super.onMessageReceived(s, bundle);
-      
     }
 
     @Override
@@ -64,29 +64,24 @@ public class NotificationsListenerService extends GcmListenerService {
      
     }
 
- 
- 
-  
     @Override
     public void handleIntent(Intent arg0) {
-        super.handleIntent(arg0);
- 
-      
+        Log.e("push", "intent: " + arg0);
+        // super.handleIntent(arg0);
         try {
-        	
             Bundle bundle = arg0.getExtras();
-            Log.e("mainHeadeer", "mainHeadeer " + bundle);
+            Log.e("push", "bundle: " + bundle);
             if(bundle == null) return;
          String tag = bundle.getString("gcm.notification.tag");
          String type = bundle.getString("type");
          SharedPreferences sp = getSharedPreferences("name", 0);
-         NotificationManager notificationManager = (NotificationManager) getSystemService("notification");
+         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
          notificationManager.cancelAll(); 
          switch(type) {
          case "1" :{
         	 String  uuid = bundle.getString("name").trim(); 
-        	 String  base = bundle.getString("ip"); 
-  
+        	 String  base = bundle.getString("ip");
+             Log.e("push", "new server found: " + uuid + " " + base);
         	 if(uuid.substring(0 ,4).equalsIgnoreCase(sp.getString("UUID", "UUID").substring(0 ,4).trim())) {
         		 sp.edit().putString("base", base).commit();
         	     Intent intent = new Intent(this, MainActivity.class);
@@ -97,6 +92,7 @@ public class NotificationsListenerService extends GcmListenerService {
          }return;
          case "2":{
         	 String name = bundle.getString("name");
+             Log.e("push", "new message for: " + name);
         	 if(name.equalsIgnoreCase(sp.getString("UUID", ""))) {
         		 String  base = bundle.getString("ip"); 
         		 sp.edit().putString("base", base).commit();
@@ -111,7 +107,7 @@ public class NotificationsListenerService extends GcmListenerService {
         		        startActivity(intent);
         		 }
         		 else	
-        	 notifi(bundle);
+        	        notifi(bundle);
         	 }
          }
          break;
@@ -127,7 +123,7 @@ public class NotificationsListenerService extends GcmListenerService {
     
     @SuppressWarnings("deprecation")
 	public void notifi(Bundle bundle) throws Exception {
-       NotificationManager notificationManager = (NotificationManager) getSystemService("notification");
+       NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
      //  notificationManager.cancelAll();
        SharedPreferences sp = getSharedPreferences("name", 0);
         Intent intent = new Intent(this, MainActivity.class);

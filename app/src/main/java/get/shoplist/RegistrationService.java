@@ -1,17 +1,17 @@
 package get.shoplist;
 
-       import android.app.IntentService;
+import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
 import android.util.Log;
 
-        import com.google.android.gms.gcm.GcmPubSub;
-        import com.google.android.gms.gcm.GoogleCloudMessaging;
-        import com.google.android.gms.iid.InstanceID;
+import com.google.android.gms.gcm.GcmPubSub;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.google.android.gms.iid.InstanceID;
 
-        import java.io.IOException; 
+import java.io.IOException;
 
 public class RegistrationService extends IntentService {
     private static final String[] TOPICS = {"global"};
@@ -37,7 +37,7 @@ public class RegistrationService extends IntentService {
         InstanceID myID = InstanceID.getInstance(this);
         
         try {
-            registrationToken = myID.getToken("0000", GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+            registrationToken = myID.getToken("355486944954", GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
    
             GcmPubSub subscription = GcmPubSub.getInstance(this);
             subscription.subscribe(registrationToken, "/topics/my_little_topic", null);
