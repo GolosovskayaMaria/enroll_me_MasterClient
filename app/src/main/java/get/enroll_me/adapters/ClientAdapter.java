@@ -1,7 +1,6 @@
-package get.shoplist.adapters;
+package get.enroll_me.adapters;
 
 
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,16 +9,11 @@ import java.util.List;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-import get.shoplist.R;
-import get.shoplist.adapters.ClientAdapter.ClientAdapterViewHolder;
-import get.shoplist.model.Client;
+import get.enroll_me.R;
+import get.enroll_me.model.Client;
 public class ClientAdapter  extends Adapter<ClientAdapter.ClientAdapterViewHolder> {
 	List<Client> list;
 	public interface OnClick{

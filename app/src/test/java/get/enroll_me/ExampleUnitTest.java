@@ -1,4 +1,4 @@
-package get.shoplist;
+package get.enroll_me;
 
 import org.junit.Test;
 

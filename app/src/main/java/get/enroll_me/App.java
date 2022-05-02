@@ -1,9 +1,8 @@
-package get.shoplist;
+package get.enroll_me;
 
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 
 public class App extends Application{

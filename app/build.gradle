@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "get.shoplist"
+        applicationId "get.enroll_me"
         minSdk 16
         targetSdk 31
         versionCode 7

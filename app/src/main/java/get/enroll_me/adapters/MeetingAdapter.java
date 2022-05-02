@@ -1,9 +1,8 @@
-package get.shoplist.adapters;
+package get.enroll_me.adapters;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,10 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-import get.shoplist.R;
-import get.shoplist.adapters.ClientAdapter.ClientAdapterViewHolder;
-import get.shoplist.adapters.ClientAdapter.OnClick;
-import get.shoplist.model.Client;
+import get.enroll_me.R;
 
 public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapterViewHolder> {
 	JSONArray list;

@@ -1,4 +1,4 @@
-package get.shoplist.fragments;
+package get.enroll_me.fragments;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,10 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
-import get.shoplist.MainActivity;
-import get.shoplist.R;
+import get.enroll_me.MainActivity;
+import get.enroll_me.R;
 
-import get.shoplist.net.NetworkHelper;
+import get.enroll_me.net.NetworkHelper;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

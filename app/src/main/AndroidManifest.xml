@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="get.shoplist">
+    package="get.enroll_me">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
-        android:name=".App"
+        android:name="get.enroll_me.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,7 +17,7 @@
         >
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <activity
-            android:name=".MainActivity"
+            android:name="get.enroll_me.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,16 +27,16 @@
         </activity>
 
         <activity
-            android:name=".AddClientActivity"
+            android:name="get.enroll_me.AddClientActivity"
             />
         <activity
-            android:name=".ClientActivity"
+            android:name="get.enroll_me.ClientActivity"
             />
         <activity
-            android:name=".MeetingsActivity"
+            android:name="get.enroll_me.MeetingsActivity"
             />
         <activity
-            android:name=".Create_Meeting_Activity"
+            android:name="get.enroll_me.Create_Meeting_Activity"
             />
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -52,12 +52,12 @@
               </intent-filter>  -->
         </receiver>
         <service
-            android:name=".NotificationsListenerService"
+            android:name="get.enroll_me.NotificationsListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter></service>
-        <service android:name=".RegistrationService"
+        <service android:name="get.enroll_me.RegistrationService"
             android:exported="false" />
     </application>
 

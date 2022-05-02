@@ -1,4 +1,4 @@
-package get.shoplist.fragments;
+package get.enroll_me.fragments;
 
 import android.content.Context;
 import androidx.appcompat.app.AlertDialog;

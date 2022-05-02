@@ -1,4 +1,4 @@
-package get.shoplist.net;
+package get.enroll_me.net;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

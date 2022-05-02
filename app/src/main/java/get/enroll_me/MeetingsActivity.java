@@ -1,8 +1,6 @@
-package get.shoplist;
+package get.enroll_me;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import org.json.JSONArray;
@@ -30,10 +28,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import get.shoplist.adapters.MeetingAdapter;
-import get.shoplist.fragments.Dialog;
-import get.shoplist.model.Client;
-import get.shoplist.net.NetworkHelper;
+import get.enroll_me.adapters.MeetingAdapter;
+import get.enroll_me.net.NetworkHelper;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -186,20 +182,24 @@ if(!all) cleanoldarr();
 	}
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	private JSONArray cleanoldarr() throws Exception {
-		// TODO Auto-generated method stub
-		Date d =new Date();
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		for(int i= arr.length()-1;i>-1;i--) {
-			JSONObject ob = arr.getJSONObject(i);
-		Date date = dateFormat.parse(ob.getString("meetupDate"));
-			if(d.getTime() - date.getTime() > limit ) {arr.remove(i);
-			return  cleanoldarr();
+		try {
+			Date d =new Date();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			for(int i= arr.length()-1;i>-1;i--) {
+				JSONObject ob = arr.getJSONObject(i);
+				Date date = dateFormat.parse(ob.getString("meetupDate"));
+				if(d.getTime() - date.getTime() > limit ) {
+					arr.remove(i);
+					return  cleanoldarr();
+				}
 			}
-		
-			}
-		return arr;
+			return arr;
+		} catch (Exception e) {
+			Log.e("schedule response failed", "" + e.toString());
+			e.printStackTrace();
+			return arr;
+		}
+
 	}
 	@SuppressLint("NewApi")
 	private JSONArray cleanarr() throws JSONException {
@@ -306,6 +306,7 @@ if(!all) cleanoldarr();
 				// TODO Auto-generated method stub
 				try {
 					arr =new JSONArray(arg1.body().string());
+					Log.d("schedule", "response " + arr);
 					cleanarr();
 					new Handler(Looper.getMainLooper()).post(new Runnable() {
 						

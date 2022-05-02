@@ -1,17 +1,10 @@
-package get.shoplist.net;
-
-import android.content.SharedPreferences;
-
+package get.enroll_me.net;
 
 
 import java.io.IOException;
 
 import okhttp3.*;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-
-
 
 
 public class NetworkHelper {

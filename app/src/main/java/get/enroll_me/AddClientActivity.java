@@ -1,16 +1,11 @@
-package get.shoplist;
+package get.enroll_me;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 import a.b.framehelper.RpinnerAdapter;
 
-import android.content.SharedPreferences;
-import android.os.Process;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -20,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import get.shoplist.net.NetworkHelper;
+import get.enroll_me.net.NetworkHelper;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -25,19 +25,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.BaseAdapter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
-import get.shoplist.R;
+import get.enroll_me.R;
 
 public class RpinnerAdapter<T> extends BaseAdapter  {
 

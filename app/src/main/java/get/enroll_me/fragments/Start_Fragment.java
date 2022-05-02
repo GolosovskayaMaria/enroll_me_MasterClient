@@ -1,4 +1,4 @@
-package get.shoplist.fragments;
+package get.enroll_me.fragments;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,21 +20,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
-import get.shoplist.AddClientActivity;
-import get.shoplist.ClientActivity;
-import get.shoplist.MainActivity;
-import get.shoplist.MeetingsActivity;
-import get.shoplist.R;
-import get.shoplist.adapters.ClientAdapter;
-import get.shoplist.adapters.ClientAdapter.OnClick;
-import get.shoplist.model.Client;
-import get.shoplist.net.NetworkHelper;
+
+import get.enroll_me.AddClientActivity;
+import get.enroll_me.ClientActivity;
+import get.enroll_me.MainActivity;
+import get.enroll_me.MeetingsActivity;
+import get.enroll_me.R;
+import get.enroll_me.adapters.ClientAdapter;
+import get.enroll_me.adapters.ClientAdapter.OnClick;
+import get.enroll_me.model.Client;
+import get.enroll_me.net.NetworkHelper;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

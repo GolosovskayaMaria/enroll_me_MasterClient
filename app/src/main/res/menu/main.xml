@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="get.shoplist.MainActivity" >
+    tools:context="get.enroll_me.MainActivity" >
 
     <item
         android:id="@+id/action_settings"

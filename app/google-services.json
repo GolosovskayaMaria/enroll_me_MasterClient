@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "355486944954",
-    "firebase_url": "https://twiplus-9e1b6.firebaseio.com",
-    "project_id": "twiplus-9e1b6",
-    "storage_bucket": "twiplus-9e1b6.appspot.com"
+    "project_number": "951792751705",
+    "project_id": "enrollme-1106f",
+    "storage_bucket": "enrollme-1106f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:355486944954:android:68e1977de0e7a176",
+        "mobilesdk_app_id": "1:951792751705:android:ff812bf8beca6f2067cd48",
         "android_client_info": {
-          "package_name": "sim.twittapp"
+          "package_name": "get.enroll_me"
         }
       },
       "oauth_client": [
         {
-          "client_id": "355486944954-s7im0p7m19carhn59vm6ldv1jsr4sjhd.apps.googleusercontent.com",
+          "client_id": "951792751705-7pltvlbot5600r46roi4vghu7tqcl1e1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD7FxLwePGk1svb8mVdRmfb4PLVaDQUaOM"
+          "current_key": "AIzaSyD0gFTA0EmQvH06oaiIwOmN8ZzlruRRcNk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "355486944954-s7im0p7m19carhn59vm6ldv1jsr4sjhd.apps.googleusercontent.com",
+              "client_id": "951792751705-7pltvlbot5600r46roi4vghu7tqcl1e1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

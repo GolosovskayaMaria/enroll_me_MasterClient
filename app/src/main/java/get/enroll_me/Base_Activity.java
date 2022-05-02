@@ -1,4 +1,4 @@
-package get.shoplist;
+package get.enroll_me;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.core.content.ContextCompat;
-import get.shoplist.model.Client;
- 
+
 public abstract class Base_Activity extends Activity{
 	
 public static Activity act;

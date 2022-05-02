@@ -1,4 +1,4 @@
-package get.shoplist.model;
+package get.enroll_me.model;
 
 import java.io.Serializable;
 

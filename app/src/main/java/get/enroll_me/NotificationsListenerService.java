@@ -1,42 +1,22 @@
-package get.shoplist;
+package get.enroll_me;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.job.JobInfo;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.service.notification.StatusBarNotification;
 
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.RemoteViews;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Date;
-import java.util.List;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
@@ -153,7 +133,7 @@ public class NotificationsListenerService extends GcmListenerService {
                 "master",
                 NotificationManager.IMPORTANCE_DEFAULT
         ); 
-        serviceChannel.setDescription("get.shoplist");
+        serviceChannel.setDescription("get.enroll_me");
         serviceChannel.enableLights(true);
         serviceChannel.enableVibration(true);
    //     serviceChannel.setVibrationPattern(dd);
