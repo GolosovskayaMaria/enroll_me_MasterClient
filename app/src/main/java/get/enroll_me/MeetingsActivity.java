@@ -39,10 +39,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MeetingsActivity extends Activity {
-    JSONArray arr;
+    JSONArray meetingsList;
     private SharedPreferences shar;
     private RecyclerView recycler;
-    private JSONArray clientlist;
+    private JSONArray clientList;
     final long limit = 3600000 * 24;
     private boolean all = true;
     DatePicker datePicker;
@@ -133,10 +133,10 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                // TODO Auto-generated method stub
+
                 try {
-                    arr = new JSONArray(arg1.body().string());
-                    cleanarr();
+                    meetingsList = new JSONArray(arg1.body().string());
+                    cleanUnconfirmedRecords();
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
 
                         @Override
@@ -176,11 +176,12 @@ public class MeetingsActivity extends Activity {
 
     private void rerloadTable(boolean all) {
         try {
-            if (arr == null)
-                arr = new JSONArray(getIntent().getStringExtra("schedule_clients"));
-            cleanarr();
-            if (!all) cleanoldarr();
-            clientlist = new JSONArray(shar.getString("list", "[]"));
+            if (meetingsList == null)
+                meetingsList = new JSONArray(getIntent().getStringExtra("schedule_clients"));
+            cleanUnconfirmedRecords();
+            //if (!all)
+            //    cleanoldarr();
+            clientList = new JSONArray(shar.getString("list", "[]"));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -193,46 +194,46 @@ public class MeetingsActivity extends Activity {
         try {
             Date d = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            for (int i = arr.length() - 1; i > -1; i--) {
-                JSONObject ob = arr.getJSONObject(i);
+            for (int i = meetingsList.length() - 1; i > -1; i--) {
+                JSONObject ob = meetingsList.getJSONObject(i);
                 Date date = dateFormat.parse(ob.getString("meetupDate"));
                 if (d.getTime() - date.getTime() > limit) {
-                    arr.remove(i);
+                    meetingsList.remove(i);
                     return cleanoldarr();
                 }
             }
-            return arr;
+            return meetingsList;
         } catch (Exception e) {
             Log.e("schedule response failed", "" + e.toString());
             e.printStackTrace();
-            return arr;
+            return meetingsList;
         }
 
     }
 
+    // клиент получил приглашение но еще не записался, удалим эти записи из расписания
     @SuppressLint("NewApi")
-    private JSONArray cleanarr() throws JSONException {
-        for (int i = arr.length() - 1; i > -1; i--) {
-            JSONObject ob = arr.getJSONObject(i);
+    private JSONArray cleanUnconfirmedRecords() throws JSONException {
+        for (int i = meetingsList.length() - 1; i > -1; i--) {
+            JSONObject ob = meetingsList.getJSONObject(i);
             if (ob.getString("meetupDate").endsWith("00:00:00")) {
-                arr.remove(i);
-                return cleanarr();
+                meetingsList.remove(i);
+                return cleanUnconfirmedRecords();
             }
-
         }
-        return arr;
+        return meetingsList;
     }
 
     private void load() {
-        MeetingAdapter adapter = new MeetingAdapter(arr, clientlist);
+        MeetingAdapter adapter = new MeetingAdapter(meetingsList, clientList);
         recycler.setAdapter(adapter);
         adapter.setOnClickListener(new MeetingAdapter.OnClick() {
 
             @Override
             public void onClick(JSONObject obt, int client) {
-                for (int i = 0; i < clientlist.length(); i++) {
+                for (int i = 0; i < clientList.length(); i++) {
                     try {
-                        JSONObject ob = clientlist.getJSONObject(i);
+                        JSONObject ob = clientList.getJSONObject(i);
                         if (ob.getInt("id") == client) {
                             delete_meeting(ob.getString("name"), obt);
                             break;
@@ -310,9 +311,9 @@ public class MeetingsActivity extends Activity {
             public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
                 // TODO Auto-generated method stub
                 try {
-                    arr = new JSONArray(arg1.body().string());
-                    Log.d("schedule", "response " + arr);
-                    cleanarr();
+                    meetingsList = new JSONArray(arg1.body().string());
+                    Log.d("schedule", "response " + meetingsList);
+                    cleanUnconfirmedRecords();
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
 
                         @Override

@@ -107,15 +107,13 @@ public class Start_Fragment extends Fragment{
 						
 						@Override
 						public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-							// TODO Auto-generated method stub
 							try {
 								JSONArray arr=new JSONArray(arg1.body().string());
 								Intent intent = new Intent(getActivity(), MeetingsActivity.class);
 								intent.putExtra("schedule_clients", arr.toString());
 								startActivity(intent);
-							Log.e("sssssss", "" + arr);
+							Log.i("schedule", "response from server" + arr);
 							} catch (Exception e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						
