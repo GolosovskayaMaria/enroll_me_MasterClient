@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 		} else toStart();
 		main_name= findViewById(R.id.main_name);
 		if(shar.getString("name", null) != null)
-		main_name.setText("Ваше имя: "+shar.getString("name", "") +" UUID " + uniqueID.substring(0 ,4).toUpperCase() );
+		main_name.setText("Здравствуйте, мастер "+shar.getString("name", "") +" UUID " + uniqueID.substring(0 ,4).toUpperCase() );
 		//*/
 	}
 	private void showDFialog() {
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 				// TODO Auto-generated method stub
 				nameedit.setVisibility(View.INVISIBLE);
 				last_nameedit.setVisibility(View.INVISIBLE);
-				main_name.setText("Ваше имя: "+shar.getString("name", "") +" UUID " + uniqueID.substring(0 ,4).toUpperCase() );
+				main_name.setText("Здравствуйте, мастер "+shar.getString("name", "") +" UUID " + uniqueID.substring(0 ,4).toUpperCase() );
 			TextView ok =	findViewById(R.id.check);
 			ok.setVisibility(View.VISIBLE);
 			ok.setText("Начать поиск");

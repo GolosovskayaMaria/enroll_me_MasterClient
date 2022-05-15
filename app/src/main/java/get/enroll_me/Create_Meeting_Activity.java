@@ -70,12 +70,12 @@ public class Create_Meeting_Activity extends Base_Activity{
 	
 		type =	 getIntent().getIntExtra("type", 1);
 		if(type == 1) {
-			meeting.setText("Создать самоэапись для " + client.name);
+			meeting.setText("Записать ");
 meeting.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
-					final String urlbase = shar.getString("base","http://192.168.1.2:8888");
+					final String urlbase = shar.getString("base", "http://192.168.1.2:8888");
 					
 					NetworkHelper.getInstance(urlbase).getWebService().schedule_day(shar.getString("UUID", "UUID"),date.getMonth(), 
 							date.getDate()).enqueue(new Callback<ResponseBody>() {
@@ -234,8 +234,7 @@ NetworkHelper.getInstance(urlbase).getWebService().invite_client(client.id , cli
 	private void sendclient(final int id) {
 		
 			AlertDialog.Builder dl = new AlertDialog.Builder(Create_Meeting_Activity.this);
-			dl.setTitle("Отправить ссылку");
-			dl.setMessage("Выбор носителя");	
+			dl.setTitle("С помощью чего отправить уведомление?");
 			dl.setPositiveButton("CMC", new DialogInterface.OnClickListener() {
 				
 				@Override
@@ -273,8 +272,7 @@ NetworkHelper.getInstance(urlbase).getWebService().invite_client(client.id , cli
 		NetworkHelper.getInstance(urlbase).getWebService().invite_client(client.id , client.app_id , dateFormat.format(date)).enqueue(new Callback<ResponseBody>() {
 		@Override
 		public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-			// TODO Auto-generated method stub
-			
+
 				try {
 					String s = arg1.body().string();
 					s = s.replace("\"", "");
@@ -282,15 +280,12 @@ NetworkHelper.getInstance(urlbase).getWebService().invite_client(client.id , cli
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					 final String dotime = dateFormat.format(date);
 					
-							// TODO Auto-generated method stub
 							AlertDialog.Builder dl = new AlertDialog.Builder(Create_Meeting_Activity.this);
-							dl.setTitle("Отправить ссылку");
-							dl.setMessage("Выбор носителя");	
+							dl.setTitle("С помощью чего отправить уведомление?");
 							dl.setPositiveButton("CMC", new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
-									// TODO Auto-generated method stub
 									send_sms(dotime);
 									finish();
 								}
@@ -338,7 +333,7 @@ private void send_sms(int id) {
 	 Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
 	 intent.putExtra(Intent.EXTRA_SUBJECT,
 			 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-				" Приглашает Вас записаться на прием");
+				" Приглашает Вас записаться на приём");
 	 intent.putExtra(Intent.EXTRA_TEXT, shar.getString("base","http://192.168.1.2:8888")+"/api/enroll/invite?invite=" +id);
      startActivity(intent);
 	}
@@ -348,7 +343,7 @@ void composeEmail(int id) {
   //  intent.putExtra(Intent.EXTRA_EMAIL, addresses);
     intent.putExtra(Intent.EXTRA_SUBJECT,
 			 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-				" Приглашает Вас записаться на прием");
+				" Приглашает Вас записаться на приём");
 	 intent.putExtra(Intent.EXTRA_TEXT, shar.getString("base","http://192.168.1.2:8888")+"/api/enroll/invite?invite=" +id);
    
     if (intent.resolveActivity(getPackageManager()) != null) {
@@ -359,7 +354,7 @@ private void send_soc(int id) {
 	 Intent sendIntent = new Intent(Intent.ACTION_SEND);
 		// intent.putExtra(Intent.EXTRA_TITLE,
 		//		 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-		//			" Приглашает Вас записаться на прием");
+		//			" Приглашает Вас записаться на приём");
 		 sendIntent.putExtra(Intent.EXTRA_TEXT, shar.getString("base","http://192.168.1.2:8888")+"/api/enroll/invite?invite=" + id);
 	    
 		 sendIntent.setType("text/plain");
@@ -370,10 +365,10 @@ private void send_soc(String time) {
 	 Intent sendIntent = new Intent(Intent.ACTION_SEND);
 		// intent.putExtra(Intent.EXTRA_TITLE,
 		//		 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-		//			" Приглашает Вас записаться на прием");
+		//			" Приглашает Вас записаться на приём");
 		 sendIntent.putExtra(Intent.EXTRA_TEXT, 
-				 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-					" Записатл Вас  на прием в "+time
+				 shar.getString("client.name", "") +" " + shar.getString("last_nameedit", "")+
+						 client.name + ", рады будем видеть Вас на приёме: " +time
 				 );
 	    
 		 sendIntent.setType("text/plain");
@@ -386,7 +381,7 @@ void composeEmail(String time) {
   //  intent.putExtra(Intent.EXTRA_EMAIL, addresses);
     intent.putExtra(Intent.EXTRA_SUBJECT,
 			 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-				" Записатл Вас  на прием");
+				" Записатл Вас  на приём");
 	 intent.putExtra(Intent.EXTRA_TEXT, "Время записи " + time);
    
     if (intent.resolveActivity(getPackageManager()) != null) {
@@ -398,7 +393,7 @@ private void send_sms(String time) {
 	 Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
 	 intent.putExtra(Intent.EXTRA_SUBJECT,
 			 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-				" Записатл Вас  на прием");
+				" Записатл Вас  на приём");
 	 intent.putExtra(Intent.EXTRA_TEXT, "Время записи " + time);
      startActivity(intent);
 	}

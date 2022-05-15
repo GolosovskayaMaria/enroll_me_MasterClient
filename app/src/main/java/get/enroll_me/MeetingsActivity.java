@@ -82,8 +82,8 @@ public class MeetingsActivity extends Activity {
 		}
 	});
 		if(shar.getString("name", null) != null)
-		//main_name.setText("Ваше имя: "+shar.getString("name", "") +" " + shar.getString("last_nameedit", ""));
-			main_name.setText("Список записи");
+		//main_name.setText("Здравствуйте, мастер "+shar.getString("name", "") +" " + shar.getString("last_nameedit", ""));
+			main_name.setText("Журнал записей");
 		
 		datePicker = findViewById(R.id.pada_picker);
 		if(android.os.Build.VERSION.SDK_INT > 22)
@@ -246,7 +246,7 @@ if(!all) cleanoldarr();
 		Log.e("ssssss", "" +obt);
 		AlertDialog.Builder dl = new AlertDialog.Builder(MeetingsActivity.this);
 		dl.setTitle("Запись " + name);
-		dl.setMessage("Вы действительно хотите удалить запись на " + obt.getString("createDate"));
+		dl.setMessage("Вы хотите удалить запись на " + obt.getString("createDate"));
 		dl.setPositiveButton("Да", new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -331,8 +331,7 @@ if(!all) cleanoldarr();
 	}
 void	send_message(String time ){
 		AlertDialog.Builder dl = new AlertDialog.Builder(this);
-		dl.setTitle("Отправить уведомление слиенту?");
-		dl.setMessage("Выбор носителя");
+		dl.setTitle("С помощью чего отправить уведомление?");
 		dl.setPositiveButton("CMC", new DialogInterface.OnClickListener() {
 
 			@Override
@@ -366,10 +365,10 @@ void	send_message(String time ){
 		Intent sendIntent = new Intent(Intent.ACTION_SEND);
 		// intent.putExtra(Intent.EXTRA_TITLE,
 		//		 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-		//			" Приглашает Вас записаться на прием");
+		//			" Приглашает Вас записаться на приём");
 		sendIntent.putExtra(Intent.EXTRA_TEXT,
 				shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-						" Удалил апись  на прием в "+time
+						", удалила Вашу запись на приём "+time
 		);
 
 		sendIntent.setType("text/plain");
@@ -382,7 +381,7 @@ void	send_message(String time ){
 		//  intent.putExtra(Intent.EXTRA_EMAIL, addresses);
 		intent.putExtra(Intent.EXTRA_SUBJECT,
 				shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-						" Удалил апись  на прием");
+						", удалила Вашу запись на приём ");
 		intent.putExtra(Intent.EXTRA_TEXT, "Время записи " + time);
 
 		if (intent.resolveActivity(getPackageManager()) != null) {
@@ -395,7 +394,7 @@ void	send_message(String time ){
 		Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
 		intent.putExtra(Intent.EXTRA_SUBJECT,
 				shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-						" Удалил апись  на прием");
+						", удалила Вашу запись на приём ");
 		intent.putExtra(Intent.EXTRA_TEXT, "Время записи " + time);
 		startActivity(intent);
 	}

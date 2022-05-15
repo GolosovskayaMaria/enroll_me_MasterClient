@@ -40,9 +40,9 @@ public class ClientActivity extends Base_Activity
 		tel.setText(client.phone);
 		  
 		if(shar.getString("name", null) != null)
-			main_name.setText("Страница клиетеа " + client.name);
-	//	main_name.setText("Ваше имя: "+shar.getString("name", "") +" " + shar.getString("last_nameedit", ""));
-	findViewById(R.id.see_send).setVisibility(View.GONE);
+			main_name.setText("Страница клиента " + client.name);
+		//	main_name.setText("Здравствуйте, мастер "+shar.getString("name", "") +" " + shar.getString("last_nameedit", ""));
+		findViewById(R.id.see_send).setVisibility(View.GONE);
       
 		ImageView soc = findViewById(R.id.social_icon);
 		ClientAdapter.seeIcon(client,soc);
@@ -61,8 +61,8 @@ public class ClientActivity extends Base_Activity
 			@Override
 			public void onClick(View v) {
 				AlertDialog.Builder dl = new AlertDialog.Builder(ClientActivity.this);
-				dl.setTitle("Вниманте!");
-				dl.setMessage("Вы действительно хотите удалить " + client.name);
+				dl.setTitle("Внимание!");
+				dl.setMessage("Вы точно хотите удалить этого клиента");
 				dl.setPositiveButton("Да", new DialogInterface.OnClickListener() {
 					
 					@Override

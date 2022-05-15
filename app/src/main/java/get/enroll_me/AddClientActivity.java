@@ -27,7 +27,7 @@ public class AddClientActivity extends Base_Activity{
 	 
 	String  uniqueID;
 	TextView social;
-	EditText contact_name,phone_number,location; 
+	EditText contact_name,phone_number,location;
 	@Override    
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -83,11 +83,11 @@ public class AddClientActivity extends Base_Activity{
 		@Override
 		public void onClick(View v) {
 		if(contact_name.getText().toString().length()==0) {
-			Toast.makeText(getBaseContext(),"Поле contact name обязятельно для заполнения", Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(),"Поле contact name обязательно для заполнения", Toast.LENGTH_LONG).show();
 			return;
 		}
 		if(phone_number.getText().toString().length()==0) {
-			Toast.makeText(getBaseContext(),"Поле phone number обязятельно для заполнения", Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(),"Поле phone number обязательно для заполнения", Toast.LENGTH_LONG).show();
 				return;
 			}
 		createClient();

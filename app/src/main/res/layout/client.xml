@@ -47,7 +47,7 @@ style="@style/TextDefault"
  style="@style/TextClick"
     android:layout_marginTop="20dp"
     android:id="@+id/send"
-    android:text="Создать самозапись на прием"
+    android:text="Создать самозапись на приём"
 android:layout_gravity="center"
    
 
@@ -56,7 +56,7 @@ android:layout_gravity="center"
  style="@style/TextClick"
 android:layout_marginTop="20dp"
     android:id="@+id/create_meeting"
-    android:text="Записать клиента на прием"
+    android:text="Записать клиента на приём"
    android:layout_gravity="center"
 
               />  
