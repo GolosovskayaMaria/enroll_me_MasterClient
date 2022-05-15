@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -245,7 +246,6 @@ public class Create_Meeting_Activity extends Base_Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
                 send_sms(id);
                 finish();
             }
@@ -254,7 +254,6 @@ public class Create_Meeting_Activity extends Base_Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
                 send_soc(id);
                 finish();
             }
@@ -284,9 +283,9 @@ public class Create_Meeting_Activity extends Base_Activity {
                     String s = arg1.body().string();
                     s = s.replace("\"", "");
                     int invite = Integer.parseInt(s);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
                     final String dotime = dateFormat.format(date);
-
+                    Log.i("invite", "send meeting invitation: " + dotime);
                     AlertDialog.Builder dl = new AlertDialog.Builder(Create_Meeting_Activity.this);
                     dl.setTitle("С помощью чего отправить уведомление?");
                     dl.setPositiveButton("CMC", new DialogInterface.OnClickListener() {
@@ -301,7 +300,6 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // TODO Auto-generated method stub
                             send_soc(dotime);
                             finish();
                         }
@@ -310,7 +308,6 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // TODO Auto-generated method stub
                             composeEmail(dotime);
                             finish();
                         }
@@ -319,17 +316,12 @@ public class Create_Meeting_Activity extends Base_Activity {
 
 
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-
-
             }
-
 
             @Override
             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                // TODO Auto-generated method stub
                 Toast.makeText(getApplicationContext(), "Не удалось сформировать приглашение на запись", 0).show();
             }
         });
@@ -362,10 +354,8 @@ public class Create_Meeting_Activity extends Base_Activity {
 
     private void send_soc(int id) {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        // intent.putExtra(Intent.EXTRA_TITLE,
-        //		 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
-        //			" Приглашает Вас записаться на приём");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, shar.getString("base", "http://192.168.1.2:8888") + "/api/enroll/invite?invite=" + id);
+        String server_path = shar.getString("base", "http://192.168.1.2:8888");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Пожалуйста перейдите по ссылке и выберите удобное время для визита " + server_path + "/api/enroll/invite?invite=" + id);
 
         sendIntent.setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);
