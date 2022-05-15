@@ -50,7 +50,7 @@ public class MeetingsActivity extends Activity {
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
+        
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.brand_background));
@@ -66,7 +66,7 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                
                 datePicker.setVisibility(View.VISIBLE);
             }
         });
@@ -82,7 +82,7 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                
                 selectAll();
             }
         });
@@ -98,7 +98,7 @@ public class MeetingsActivity extends Activity {
 
                     @Override
                     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        // TODO Auto-generated method stub
+                        
                         //	date.setYear(year);
                         int getMonth = datePicker.getMonth();
                         int getDate = datePicker.getDayOfMonth();
@@ -114,7 +114,7 @@ public class MeetingsActivity extends Activity {
 
                 @Override
                 public void onClick(View v) {
-                    // TODO Auto-generated method stub
+                    
                     int getMonth = datePicker.getMonth();
                     int getDate = datePicker.getDayOfMonth();
 
@@ -127,7 +127,7 @@ public class MeetingsActivity extends Activity {
     }
 
     private void loadnewDate(int getMonth, int day) {
-        // TODO Auto-generated method stub
+        
         String urlbase = shar.getString("base", "http://192.168.1.2:8888");
         NetworkHelper.getInstance(urlbase).getWebService().schedule_day(shar.getString("UUID", "1"), getMonth, day).enqueue(new Callback<ResponseBody>() {
 
@@ -147,14 +147,14 @@ public class MeetingsActivity extends Activity {
                     });
 
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
+                    
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                // TODO Auto-generated method stub
+                
 
             }
         });
@@ -183,7 +183,7 @@ public class MeetingsActivity extends Activity {
             //    cleanoldarr();
             clientList = new JSONArray(shar.getString("list", "[]"));
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
             finish();
         }
@@ -258,7 +258,7 @@ public class MeetingsActivity extends Activity {
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
         String formattedDate = formatter.format(dateDate);
 
-        dl.setMessage("Вы хотите удалить запись на " + formattedDate);
+        dl.setMessage("Уверены, что хотите удалить запись на " + formattedDate + "?");
         dl.setPositiveButton("Да", new DialogInterface.OnClickListener() {
 
             @Override
@@ -279,12 +279,12 @@ public class MeetingsActivity extends Activity {
 
                         @Override
                         public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                            // TODO Auto-generated method stub
+                            
                             Toast.makeText(getApplicationContext(), "Не удалось удалить запись", Toast.LENGTH_LONG).show();
                         }
                     });
                 } catch (JSONException e) {
-                    // TODO Auto-generated catch block
+                    
                     e.printStackTrace();
                 }
 
@@ -295,7 +295,7 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
+                
 
             }
         });
@@ -303,13 +303,13 @@ public class MeetingsActivity extends Activity {
     }
 
     private void reload() {
-        // TODO Auto-generated method stub
+        
         String urlbase = shar.getString("base", "http://192.168.1.2:8888");
         NetworkHelper.getInstance(urlbase).getWebService().schedule_clients(shar.getString("UUID", "1")).enqueue(new Callback<ResponseBody>() {
 
             @Override
             public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                // TODO Auto-generated method stub
+                
                 try {
                     meetingsList = new JSONArray(arg1.body().string());
                     Log.d("schedule", "response " + meetingsList);
@@ -318,19 +318,19 @@ public class MeetingsActivity extends Activity {
 
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
+                            
                             load();
                         }
                     });
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
+                    
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                // TODO Auto-generated method stub
+                
 
             }
         });
@@ -343,7 +343,7 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
+                
                 send_sms(time);
 
             }
@@ -352,7 +352,7 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
+                
                 send_soc(time);
 
             }
@@ -361,7 +361,7 @@ public class MeetingsActivity extends Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
+                
                 composeEmail(time);
 
             }

@@ -54,7 +54,6 @@ public class Start_Fragment extends Fragment{
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
 		main_name=view.findViewById(R.id.main_name);
 		if(shar.getString("name", null) != null)
@@ -69,7 +68,6 @@ public class Start_Fragment extends Fragment{
 				
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count) {
-					// TODO Auto-generated method stub
 					reset(s.toString());
 				}
 				
@@ -77,14 +75,10 @@ public class Start_Fragment extends Fragment{
 
 				@Override
 				public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-					// TODO Auto-generated method stub
-					
 				}
 				
 				@Override
 				public void afterTextChanged(Editable s) {
-					// TODO Auto-generated method stub
-					
 				}
 			});
 		
@@ -92,7 +86,6 @@ public class Start_Fragment extends Fragment{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent =new Intent(getActivity(), AddClientActivity.class);
 				startActivityForResult(intent, 402);
 			}
@@ -121,7 +114,6 @@ public class Start_Fragment extends Fragment{
 						
 						@Override
 						public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-							// TODO Auto-generated method stub
 							Toast.makeText(getActivity(), "Произошла ошибка", 0).show();
 						}
 					});	
@@ -161,17 +153,14 @@ public class Start_Fragment extends Fragment{
 				}
 			});
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private String getlocation(JSONObject ob) {
-		// TODO Auto-generated method stub
 		try {
 			return	ob.getString("location");
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				return null;
 			}
 	}
@@ -180,7 +169,7 @@ public class Start_Fragment extends Fragment{
 	try {
 	return	ob.getString("socilaMedia");
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		return null;
 	}
 		
@@ -188,20 +177,20 @@ public class Start_Fragment extends Fragment{
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
+		
 		super.onActivityResult(requestCode, resultCode, data);
 		String urlbase = shar.getString("base","");
 		NetworkHelper.getInstance(urlbase).getWebService().get_clients(shar.getString("UUID", "1")).enqueue(new Callback<ResponseBody>() {
 			
 			@Override
 			public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-				// TODO Auto-generated method stub
+				
 				if(arg1.message().equalsIgnoreCase("OK")) {
 					try {
 						shar.edit().putString("list", arg1.body().string()).commit();
 						
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 					reset("");
@@ -211,7 +200,7 @@ public class Start_Fragment extends Fragment{
 			
 			@Override
 			public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-				// TODO Auto-generated method stub
+				
 		
 			}
 		});

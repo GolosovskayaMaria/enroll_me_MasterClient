@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
-                    // TODO Auto-generated method stub
+                    
                     v.setVisibility(View.GONE);
                     showDFialog();
                 }
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showDFialog() {
-        // TODO Auto-generated method stub
+        
         NetworkHelper.getInstance(shar.getString("base", "http://192.168.1.2:8888")).getWebService().schedule_clients(uniqueID).enqueue(new Callback<ResponseBody>() {
 
             @Override
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     dl.show();
 
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
+                    
                     e.printStackTrace();
                 }
 
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                // TODO Auto-generated method stub
+                
                 Toast.makeText(getApplicationContext(), "Не удалось удалить клиента", Toast.LENGTH_LONG).show();
             }
         });
@@ -156,13 +156,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                // TODO Auto-generated method stub
+                
                 if (arg1.message().equalsIgnoreCase("OK")) {
                     try {
                         shar.edit().putString("list", arg1.body().string()).commit();
 
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
+                        
                         e.printStackTrace();
                     }
                     Normal();
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                // TODO Auto-generated method stub
+                
                 nameedit.setVisibility(View.INVISIBLE);
                 last_nameedit.setVisibility(View.INVISIBLE);
                 main_name.setText("Здравствуйте, мастер " + shar.getString("name", "") + " UUID " + uniqueID.substring(0, 4).toUpperCase());
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        // TODO Auto-generated method stub
+                        
                         find_Server_Fragment = new Find_Server_Fragment();
                         FragmentTransaction ft = fm.beginTransaction();
                         ft.replace(R.id.start, find_Server_Fragment);
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
+        
         super.onStop();
         main = null;
     }

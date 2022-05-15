@@ -75,7 +75,7 @@ del.setImageResource(R.drawable.whatsapp);
 
 	@Override
 	public void onBindViewHolder(ClientAdapterViewHolder holder, int position) {
-		// TODO Auto-generated method stub
+		
 		final Client item = list.get(position);
 		 holder.name.setText(item.name); 
 	//	holder.id.setText(""+item.id);

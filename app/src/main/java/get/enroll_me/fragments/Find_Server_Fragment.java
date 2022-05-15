@@ -38,7 +38,7 @@ public class Find_Server_Fragment extends Fragment{
 	}
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onViewCreated(view, savedInstanceState);
 		shar = ((MainActivity)getActivity()).shar;
 		next= shar.getInt("shar", 2);
@@ -48,7 +48,7 @@ public class Find_Server_Fragment extends Fragment{
 			
 			@Override
 			public void onRefresh() {
-				// TODO Auto-generated method stub
+				
 				next=2;
 				swiper.setRefreshing(false);
 			}
@@ -69,7 +69,7 @@ public class Find_Server_Fragment extends Fragment{
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
+				
 				text.setText("ping " + urlbase);	
 				
 			}
@@ -80,7 +80,7 @@ public class Find_Server_Fragment extends Fragment{
 			
 			@Override
 			public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-				// TODO Auto-generated method stub
+				
 				if(arg1.message().equalsIgnoreCase("OK")) {
 					shar.edit().putInt("shar", next).commit();
 					shar.edit().putString("base",urlbase).commit();
@@ -88,7 +88,7 @@ public class Find_Server_Fragment extends Fragment{
 						shar.edit().putString("list", arg1.body().string()).commit();
 						
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 					((MainActivity)getActivity()).Normal();
@@ -98,13 +98,13 @@ public class Find_Server_Fragment extends Fragment{
 			
 			@Override
 			public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-				// TODO Auto-generated method stub
+				
 				next++;
 				if(next < 256)
 				try {
 					searchAddress();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				else {
@@ -112,7 +112,7 @@ public class Find_Server_Fragment extends Fragment{
 						
 						@Override
 						public void run() {
-							// TODO Auto-generated method stub
+							
 							text.setText("Not Connect");	
 						}
 					});
@@ -144,7 +144,7 @@ public class Find_Server_Fragment extends Fragment{
            }
    
         } catch (SocketException e) {
-           // TODO Auto-generated catch block
+           
        
         }
         return ip;

@@ -19,7 +19,7 @@ SharedPreferences shar;
 @SuppressLint("NewApi")
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	// TODO Auto-generated method stub
+	
 	super.onCreate(savedInstanceState);
 	if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.brand_background));
@@ -37,14 +37,14 @@ public void LoadFrame(int res) {
 }
 @Override
 protected void onStart() {
-	// TODO Auto-generated method stub
+	
 	super.onStart();
 	act = this;
 }
 
 @Override
 protected void onStop() {
-	// TODO Auto-generated method stub
+	
 	super.onStop();
 	act = null;
 }

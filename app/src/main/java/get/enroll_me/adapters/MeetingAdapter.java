@@ -59,7 +59,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
 
 	@Override
 	public void onBindViewHolder(MeetingAdapterAdapterViewHolder holder, int position) {
-		// TODO Auto-generated method stub
+		
 		final JSONObject  item = list.optJSONObject(list.length() -1 -position);
 		holder.icon.setImageResource(R.drawable.widget_pin);
 		try {
@@ -73,7 +73,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
 				}
 				else holder.root.setBackgroundColor(0xffffffff);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			holder.phone.setText(createDate);
@@ -88,7 +88,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
 				}
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -100,7 +100,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
 						int userId = item.getInt("userId");
 					if(clic != null) clic.onClick(item  ,  userId );
 					} catch (JSONException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 					

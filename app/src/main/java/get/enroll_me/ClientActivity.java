@@ -29,7 +29,7 @@ public class ClientActivity extends Base_Activity {
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
+        
         super.onCreate(savedInstanceState);
         client = (Client) getIntent().getSerializableExtra("client");
 
@@ -62,25 +62,25 @@ public class ClientActivity extends Base_Activity {
             public void onClick(View v) {
                 AlertDialog.Builder dl = new AlertDialog.Builder(ClientActivity.this);
                 dl.setTitle("Внимание!");
-                dl.setMessage("Вы точно хотите удалить этого клиента");
+                dl.setMessage("Вы точно хотите удалить этого клиента?");
                 dl.setPositiveButton("Да", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
+                        
                         String urlbase = shar.getString("base", "http://192.168.1.2:8888");
 
                         NetworkHelper.getInstance(urlbase).getWebService().del_clients(client.id).enqueue(new Callback<ResponseBody>() {
 
                             @Override
                             public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                                // TODO Auto-generated method stub
+                                
                                 finish();
                             }
 
                             @Override
                             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                                // TODO Auto-generated method stub
+                                
                                 Toast.makeText(getApplicationContext(), "Не удалось удалить клиента", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -92,7 +92,7 @@ public class ClientActivity extends Base_Activity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
+                        
 
                     }
                 });

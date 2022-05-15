@@ -4,13 +4,11 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-
 public class App extends Application{
 public static App inst;
 public  SharedPreferences sp;
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
 		super.onCreate();
 		try {
 		inst=this;
@@ -25,6 +23,4 @@ public  SharedPreferences sp;
      
 		}catch(Exception e) {}
 	}
-
-
 }

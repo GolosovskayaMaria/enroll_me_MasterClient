@@ -46,7 +46,7 @@ public class Create_Meeting_Activity extends Base_Activity {
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
+        
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.brand_background));
@@ -62,7 +62,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                     @Override
                     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        // TODO Auto-generated method stub
+                        
                         //	date.setYear(year);
                         date.setMonth(datePicker.getMonth());
                         date.setDate(datePicker.getDayOfMonth());
@@ -87,7 +87,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                         @Override
                         public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                            // TODO Auto-generated method stub
+                            
                             try {
                                 date.setHours(0);
                                 date.setMinutes(0);
@@ -97,16 +97,18 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                     @Override
                                     public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                                        // TODO Auto-generated method stub
+                                        
                                         if (arg1.message().equalsIgnoreCase("OK")) {
                                             try {
                                                 String s = arg1.body().string();
                                                 s = s.replace("\"", "");
                                                 int invite = Integer.parseInt(s);
+                                                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
+                                                final String dotime = dateFormat.format(date);
                                                 sendclient(invite);
 
                                             } catch (Exception e) {
-                                                // TODO Auto-generated catch block
+                                                
                                                 e.printStackTrace();
                                             }
                                         }
@@ -116,19 +118,19 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                     @Override
                                     public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                                        // TODO Auto-generated method stub
+                                        
                                         Toast.makeText(getApplicationContext(), "Не удалось сформировать приглашение на запись", 0).show();
                                     }
                                 });
                             } catch (Exception e) {
-                                // TODO Auto-generated catch block
+                                
                                 e.printStackTrace();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                            // TODO Auto-generated method stub
+                            
 
                         }
                     });
@@ -148,7 +150,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                         @Override
                         public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-                            // TODO Auto-generated method stub
+                            
                             try {
                                 JSONArray arr = new JSONArray(arg1.body().string());
 
@@ -189,7 +191,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                             @Override
                                             public void onClick(View v) {
-                                                // TODO Auto-generated method stub
+                                                
                                                 time = str;
                                                 meeting.setText("Записать " + client.name + " на " + time);
                                                 meeting.setOnClickListener(new OnClickListener() {
@@ -197,13 +199,14 @@ public class Create_Meeting_Activity extends Base_Activity {
                                                     @Override
                                                     public void onClick(View v) {
                                                         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+
                                                         try {
                                                             Date d = dateFormat.parse(time);
                                                             date.setHours(d.getHours());
                                                             date.setMinutes(d.getMinutes());
                                                             date.setSeconds(d.getSeconds());
                                                         } catch (ParseException e) {
-                                                            // TODO Auto-generated catch block
+                                                            
                                                             e.printStackTrace();
                                                         }
                                                         send();
@@ -219,14 +222,14 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                 }
                             } catch (Exception e) {
-                                // TODO Auto-generated catch block
+                                
                                 e.printStackTrace();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                            // TODO Auto-generated method stub
+                            
 
                         }
                     });
@@ -262,7 +265,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
+                
                 composeEmail(id);
                 finish();
             }
@@ -272,7 +275,7 @@ public class Create_Meeting_Activity extends Base_Activity {
     }
 
     private void send() {
-        // TODO Auto-generated method stub
+        
         final String urlbase = shar.getString("base", "http://192.168.1.2:8888");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         NetworkHelper.getInstance(urlbase).getWebService().invite_client(client.id, client.app_id, dateFormat.format(date)).enqueue(new Callback<ResponseBody>() {
@@ -355,7 +358,7 @@ public class Create_Meeting_Activity extends Base_Activity {
     private void send_soc(int id) {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         String server_path = shar.getString("base", "http://192.168.1.2:8888");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Пожалуйста перейдите по ссылке и выберите удобное время для визита " + server_path + "/api/enroll/invite?invite=" + id);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Пожалуйста, перейдите по ссылке и выберите удобное время для визита " + server_path + "/api/enroll/invite?invite=" + id);
 
         sendIntent.setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);
@@ -369,7 +372,7 @@ public class Create_Meeting_Activity extends Base_Activity {
         //			" Приглашает Вас записаться на приём");
         sendIntent.putExtra(Intent.EXTRA_TEXT,
                 shar.getString("client.name", "") + " " + shar.getString("last_nameedit", "") +
-                        client.name + ", рады будем видеть Вас на приёме: " + time
+                        client.name + ", рады будем видеть Вас на приёме: " + time + " (" + ("мастер " + shar.getString("name", "")) + ")"
         );
 
         sendIntent.setType("text/plain");

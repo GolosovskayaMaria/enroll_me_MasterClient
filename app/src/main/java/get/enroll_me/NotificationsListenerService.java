@@ -176,7 +176,7 @@ public class NotificationsListenerService extends GcmListenerService {
 		try {
 		v.vibrate(dd, VibrationEffect.DEFAULT_AMPLITUDE);
 	}catch (Exception e) {
-        // TODO Auto-generated catch block
+        
         e.printStackTrace();
     }
 	}
@@ -185,14 +185,14 @@ public class NotificationsListenerService extends GcmListenerService {
 		try {
 		r.play(); 
 		}catch (Exception e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 	}
 
 	 @Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
+		
 		super.onDestroy();
 		notificationsListenerService = null;
 	}

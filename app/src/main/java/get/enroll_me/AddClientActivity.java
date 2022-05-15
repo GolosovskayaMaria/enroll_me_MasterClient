@@ -30,7 +30,7 @@ public class AddClientActivity extends Base_Activity{
 	EditText contact_name,phone_number,location;
 	@Override    
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		 
 		uniqueID =	shar.getString("UUID", "1");
@@ -63,13 +63,11 @@ public class AddClientActivity extends Base_Activity{
 			
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				// TODO Auto-generated method stub
+				
 				String[] arr = getResources().getStringArray(R.array.socialnames);
 				String soc = arr[(int) id];
 				social.setText(soc);
@@ -107,7 +105,7 @@ public class AddClientActivity extends Base_Activity{
 					
 					@Override
 					public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
-						// TODO Auto-generated method stub
+						
 					
 						if(arg1.message().equalsIgnoreCase("OK"))
 						
@@ -118,7 +116,7 @@ public class AddClientActivity extends Base_Activity{
 					
 					@Override
 					public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-						// TODO Auto-generated method stub
+						
 						
 					} 
 				});
