@@ -155,16 +155,16 @@ public class Create_Meeting_Activity extends Base_Activity {
                                 JSONArray arr = new JSONArray(arg1.body().string());
 
                                 ArrayList<String> amm = new ArrayList<>();
-                                amm.add("10:00:00");
-                                amm.add("11:00:00");
-                                amm.add("12:00:00");
-                                amm.add("13:00:00");
-                                amm.add("14:00:00");
-                                amm.add("15:00:00");
-                                amm.add("16:00:00");
-                                amm.add("17:00:00");
-                                amm.add("18:00:00");
-                                amm.add("19:00:00");
+                                amm.add("10:00");
+                                amm.add("11:00");
+                                amm.add("12:00");
+                                amm.add("13:00");
+                                amm.add("14:00");
+                                amm.add("15:00");
+                                amm.add("16:00");
+                                amm.add("17:00");
+                                amm.add("18:00");
+                                amm.add("19:00");
                                 for (int i = 0; i < arr.length(); i++) {
                                     JSONObject ob = arr.getJSONObject(i);
                                     String[] meetupDate = ob.getString("meetupDate").split(" ");

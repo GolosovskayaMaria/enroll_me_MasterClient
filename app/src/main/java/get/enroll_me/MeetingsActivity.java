@@ -179,8 +179,8 @@ public class MeetingsActivity extends Activity {
             if (meetingsList == null)
                 meetingsList = new JSONArray(getIntent().getStringExtra("schedule_clients"));
             cleanUnconfirmedRecords();
-            //if (!all)
-            //    cleanoldarr();
+            if (!all) // all это флажок Свежие записи или Все записи
+                cleanOlder(); // TODO не работает. Чистятся все записи
             clientList = new JSONArray(shar.getString("list", "[]"));
         } catch (Exception e) {
             
@@ -190,16 +190,17 @@ public class MeetingsActivity extends Activity {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    private JSONArray cleanoldarr() throws Exception {
+    private JSONArray cleanOlder() throws Exception {
         try {
             Date d = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
             for (int i = meetingsList.length() - 1; i > -1; i--) {
                 JSONObject ob = meetingsList.getJSONObject(i);
                 Date date = dateFormat.parse(ob.getString("meetupDate"));
                 if (d.getTime() - date.getTime() > limit) {
                     meetingsList.remove(i);
-                    return cleanoldarr();
+                    return cleanOlder();
                 }
             }
             return meetingsList;
