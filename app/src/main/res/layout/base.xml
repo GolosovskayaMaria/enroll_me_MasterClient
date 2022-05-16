@@ -40,15 +40,7 @@
       android:background="@drawable/background_setting_button_shape"
            />
        </LinearLayout >
-       <ImageView 
-           android:layout_width="30dp"
-        android:layout_height="30dp"
-       android:src="@drawable/back11"
-     android:onClick="back"
-        android:id="@+id/back1"
-      
-           />
-       </FrameLayout>
+  </FrameLayout>
        <FrameLayout 
               android:layout_width="match_parent"
     android:layout_height="match_parent"
