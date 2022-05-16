@@ -164,11 +164,11 @@ public class MeetingsActivity extends Activity {
         TextView t = findViewById(R.id.see_send);
         if (all) {
             all = false;
-            t.setText("Вывести все записи");
+            t.setText("Все записи");
 
         } else {
             all = true;
-            t.setText("Вывести свежие записи");
+            t.setText("Свежие записи");
         }
         rerloadTable(all);
         load();

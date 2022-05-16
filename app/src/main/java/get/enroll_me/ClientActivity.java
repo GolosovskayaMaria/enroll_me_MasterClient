@@ -40,7 +40,7 @@ public class ClientActivity extends Base_Activity {
         tel.setText(client.phone);
 
         if (shar.getString("name", null) != null)
-            main_name.setText("Страница клиента " + client.name);
+            main_name.setText("Страница клиента");
         //	main_name.setText("Здравствуйте, мастер "+shar.getString("name", "") +" " + shar.getString("last_nameedit", ""));
         findViewById(R.id.see_send).setVisibility(View.GONE);
 

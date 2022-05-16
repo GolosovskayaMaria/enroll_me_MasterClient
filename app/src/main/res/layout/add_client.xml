@@ -8,14 +8,14 @@
       android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/contact_name"
-    android:hint="contact name"
+    android:hint="Контактные данные"
     android:layout_margin="20dp"
         />
     <EditText 
         android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/phone_number"
-    android:hint="phone number"
+    android:hint="Номер телефона"
     android:inputType="phone"
     android:layout_margin="20dp"
         />
@@ -49,7 +49,7 @@
        android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/location"
-    android:hint="адрес клиента"
+    android:hint="Адрес"
     android:layout_margin="20dp"
         />
 <Button 
