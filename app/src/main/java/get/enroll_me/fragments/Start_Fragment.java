@@ -57,7 +57,7 @@ public class Start_Fragment extends Fragment{
 		super.onViewCreated(view, savedInstanceState);
 		main_name=view.findViewById(R.id.main_name);
 		if(shar.getString("name", null) != null)
-		main_name.setText("Здравствуйте, мастер "+shar.getString("name", "") +" " + shar.getString("last_nameedit", ""));
+		main_name.setText(shar.getString("last_nameedit", ""));
 		recycler = view.findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
