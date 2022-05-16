@@ -80,7 +80,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
 
 			SimpleDateFormat dateFormat1 = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
 			final String niceDate = dateFormat1.format(date);
-			holder.phone.setText(niceDate); // TODO переименовать phone
+			holder.phone.setText(niceDate); // TODO надо переименовать phone
             int userId = item.getInt("userId");
 
             for (int i = 0; i < clientlist.length(); i++) {
