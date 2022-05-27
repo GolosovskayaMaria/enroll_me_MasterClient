@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
         }
 
         holder.root.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +105,7 @@ public class MeetingAdapter extends Adapter<MeetingAdapter.MeetingAdapterAdapter
                     if (clic != null) clic.onClick(item, userId);
                 } catch (JSONException e) {
 
-                    e.printStackTrace();
+                    Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                 }
 
             }

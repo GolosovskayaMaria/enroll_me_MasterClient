@@ -107,7 +107,7 @@ public class Start_Fragment extends Fragment{
 								startActivity(intent);
 							Log.i("schedule", "response from server" + arr);
 							} catch (Exception e) {
-								e.printStackTrace();
+								Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
 							}
 						
 						}
@@ -153,7 +153,7 @@ public class Start_Fragment extends Fragment{
 				}
 			});
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
 		}
 	}
 
@@ -191,7 +191,7 @@ public class Start_Fragment extends Fragment{
 						
 					} catch (IOException e) {
 						
-						e.printStackTrace();
+						Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
 					}
 					reset("");
 				}

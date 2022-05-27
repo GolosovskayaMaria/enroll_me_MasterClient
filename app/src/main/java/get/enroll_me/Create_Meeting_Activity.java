@@ -109,7 +109,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                             } catch (Exception e) {
                                                 
-                                                e.printStackTrace();
+                                                Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                                             }
                                         }
 
@@ -118,13 +118,12 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                     @Override
                                     public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                                        
-                                        Toast.makeText(getApplicationContext(), "Не удалось сформировать приглашение на запись", 0).show();
+                                        Toast.makeText(getApplicationContext(), "Не удалось сформировать приглашение на запись", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             } catch (Exception e) {
                                 
-                                e.printStackTrace();
+                                Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                             }
                         }
 
@@ -198,32 +197,24 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                                                     @Override
                                                     public void onClick(View v) {
-                                                        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
+                                                        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
                                                         try {
                                                             Date d = dateFormat.parse(time);
                                                             date.setHours(d.getHours());
                                                             date.setMinutes(d.getMinutes());
-                                                            date.setSeconds(d.getSeconds());
+                                                            Log.i("invite", "user has picked up  " + date);
                                                         } catch (ParseException e) {
-                                                            
-                                                            e.printStackTrace();
+                                                            Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                                                         }
                                                         send();
-
                                                     }
-
-
                                                 });
                                             }
                                         });
                                     }
-                                    //
-
                                 }
                             } catch (Exception e) {
-                                
-                                e.printStackTrace();
+                                Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                             }
                         }
 
@@ -257,7 +248,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                send_soc(id);
+                send_invitation_appointment(id);
                 finish();
             }
         });
@@ -275,9 +266,9 @@ public class Create_Meeting_Activity extends Base_Activity {
     }
 
     private void send() {
-        
         final String urlbase = shar.getString("base", "http://192.168.1.2:8888");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Log.i("invite", "make server invite record: " + date);
         NetworkHelper.getInstance(urlbase).getWebService().invite_client(client.id, client.app_id, dateFormat.format(date)).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> arg0, Response<ResponseBody> arg1) {
@@ -303,7 +294,7 @@ public class Create_Meeting_Activity extends Base_Activity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            send_soc(dotime);
+                            send_invitation_appointment(dotime);
                             finish();
                         }
                     });
@@ -319,13 +310,13 @@ public class Create_Meeting_Activity extends Base_Activity {
 
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> arg0, Throwable arg1) {
-                Toast.makeText(getApplicationContext(), "Не удалось сформировать приглашение на запись", 0).show();
+                Toast.makeText(getApplicationContext(), "Не удалось сформировать приглашение на запись", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -336,7 +327,7 @@ public class Create_Meeting_Activity extends Base_Activity {
         Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
         intent.putExtra(Intent.EXTRA_SUBJECT,
                 shar.getString("name", "") + " " + shar.getString("last_nameedit", "") +
-                        " Приглашает Вас записаться на приём");
+                        " приглашает Вас записаться на приём");
         intent.putExtra(Intent.EXTRA_TEXT, shar.getString("base", "http://192.168.1.2:8888") + "/api/enroll/invite?invite=" + id);
         startActivity(intent);
     }
@@ -347,7 +338,7 @@ public class Create_Meeting_Activity extends Base_Activity {
         //  intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT,
                 shar.getString("name", "") + " " + shar.getString("last_nameedit", "") +
-                        " Приглашает Вас записаться на приём");
+                        " приглашает Вас записаться на приём");
         intent.putExtra(Intent.EXTRA_TEXT, shar.getString("base", "http://192.168.1.2:8888") + "/api/enroll/invite?invite=" + id);
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -355,7 +346,7 @@ public class Create_Meeting_Activity extends Base_Activity {
         }
     }
 
-    private void send_soc(int id) {
+    private void send_invitation_appointment(int id) {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         String server_path = shar.getString("base", "http://192.168.1.2:8888");
         sendIntent.putExtra(Intent.EXTRA_TEXT, "Пожалуйста, перейдите по ссылке и выберите удобное время для визита " + server_path + "/api/enroll/invite?invite=" + id);
@@ -365,11 +356,12 @@ public class Create_Meeting_Activity extends Base_Activity {
         startActivity(shareIntent);
     }
 
-    private void send_soc(String time) {
+    private void send_invitation_appointment(String time) {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         // intent.putExtra(Intent.EXTRA_TITLE,
         //		 shar.getString("name", "") +" " + shar.getString("last_nameedit", "")+
         //			" Приглашает Вас записаться на приём");
+        Log.i("invite", "send invitation appointment: " + time);
         sendIntent.putExtra(Intent.EXTRA_TEXT,
                 shar.getString("client.name", "") + " " + shar.getString("last_nameedit", "") +
                         client.name + ", рады будем видеть Вас на приёме: " + time + " (" + ("мастер " + shar.getString("name", "")) + ")"
@@ -385,9 +377,9 @@ public class Create_Meeting_Activity extends Base_Activity {
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         //  intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT,
-                shar.getString("name", "") + " " + shar.getString("last_nameedit", "") +
-                        " Записатл Вас  на приём");
-        intent.putExtra(Intent.EXTRA_TEXT, "Время записи " + time);
+                shar.getString("client.name", "") + " " + shar.getString("last_nameedit", "") +
+                        client.name + ", рады будем видеть Вас на приёме: " + time + " (" + ("мастер " + shar.getString("name", "")) + ")"
+        );
 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -398,9 +390,9 @@ public class Create_Meeting_Activity extends Base_Activity {
         Uri uri = Uri.parse("smsto:" + client.phone);
         Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
         intent.putExtra(Intent.EXTRA_SUBJECT,
-                shar.getString("name", "") + " " + shar.getString("last_nameedit", "") +
-                        " Записатл Вас  на приём");
-        intent.putExtra(Intent.EXTRA_TEXT, "Время записи " + time);
+                shar.getString("client.name", "") + " " + shar.getString("last_nameedit", "") +
+                        client.name + ", рады будем видеть Вас на приёме: " + time + " (" + ("мастер " + shar.getString("name", "")) + ")"
+        );
         startActivity(intent);
     }
 }
