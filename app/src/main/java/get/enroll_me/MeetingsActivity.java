@@ -148,7 +148,7 @@ public class MeetingsActivity extends Activity {
 
                 } catch (Exception e) {
                     
-                    e.printStackTrace();
+                    Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                 }
             }
 
@@ -184,7 +184,7 @@ public class MeetingsActivity extends Activity {
             clientList = new JSONArray(shar.getString("list", "[]"));
         } catch (Exception e) {
             
-            e.printStackTrace();
+            Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
             finish();
         }
     }
@@ -206,7 +206,7 @@ public class MeetingsActivity extends Activity {
             return meetingsList;
         } catch (Exception e) {
             Log.e("schedule response failed", "" + e.toString());
-            e.printStackTrace();
+            Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
             return meetingsList;
         }
 
@@ -240,7 +240,7 @@ public class MeetingsActivity extends Activity {
                             break;
                         }
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                     }
                 }
             }
@@ -273,7 +273,7 @@ public class MeetingsActivity extends Activity {
                             try {
                                 send_message(obt.getString("meetupDate"));
                             } catch (JSONException e) {
-                                e.printStackTrace();
+                                Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                             }
                         }
 
@@ -286,7 +286,7 @@ public class MeetingsActivity extends Activity {
                     });
                 } catch (JSONException e) {
                     
-                    e.printStackTrace();
+                    Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                 }
 
             }
@@ -325,7 +325,7 @@ public class MeetingsActivity extends Activity {
                     });
                 } catch (Exception e) {
                     
-                    e.printStackTrace();
+                    Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                 }
             }
 
@@ -379,6 +379,7 @@ public class MeetingsActivity extends Activity {
                 shar.getString("name", "") + " " + shar.getString("last_nameedit", "") +
                         ", удалила Вашу запись на приём " + time
         );
+
 
         sendIntent.setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);

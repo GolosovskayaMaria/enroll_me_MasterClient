@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +57,8 @@ public class Find_Server_Fragment extends Fragment{
 		try {
 			searchAddress();
 		} catch (Exception e) {
-			e.printStackTrace();
-			Toast.makeText(getContext(), "Innet Err", 0).show();
+			Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
+			Toast.makeText(getContext(), "Innet Err", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -89,7 +90,7 @@ public class Find_Server_Fragment extends Fragment{
 						
 					} catch (IOException e) {
 						
-						e.printStackTrace();
+						Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
 					}
 					((MainActivity)getActivity()).Normal();
 				}
@@ -105,7 +106,7 @@ public class Find_Server_Fragment extends Fragment{
 					searchAddress();
 				} catch (Exception e) {
 					
-					e.printStackTrace();
+					Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
 				}
 				else {
 					new Handler(Looper.getMainLooper()).post(new Runnable() {

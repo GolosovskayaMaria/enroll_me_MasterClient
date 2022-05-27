@@ -2,6 +2,7 @@ package get.enroll_me;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -39,7 +40,7 @@ public class RegistrationService extends IntentService {
             subscription.subscribe(registrationToken, "/topics/my_little_topic", null);
             //  subscription.subscribe(registrationToken, "/topics/global", null);  Log.e("String",""+myID);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
         }
     }
 }

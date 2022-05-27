@@ -177,7 +177,7 @@ public class NotificationsListenerService extends GcmListenerService {
 		v.vibrate(dd, VibrationEffect.DEFAULT_AMPLITUDE);
 	}catch (Exception e) {
         
-        e.printStackTrace();
+        Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
     }
 	}
 
@@ -186,7 +186,7 @@ public class NotificationsListenerService extends GcmListenerService {
 		r.play(); 
 		}catch (Exception e) {
             
-            e.printStackTrace();
+            Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
         }
 	}
 

@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (Exception e) {
                     
-                    e.printStackTrace();
+                    Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                 }
 
             }
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
                     } catch (IOException e) {
                         
-                        e.printStackTrace();
+                        Log.e("enroll_me", "Exception: " + Log.getStackTraceString(e));
                     }
                     Normal();
                 }
